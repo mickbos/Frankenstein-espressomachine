@@ -18,7 +18,7 @@ float readTemp(int thermistorPin){
 
 float readAverageTemp(int thermistorPin, int maxDelay, int delayAmount = 1 ){ //Delay amount in polling per half second
 	float average = 0;
-	int delayTime = maxDelay / delayAmount;
+	float delayTime = maxDelay / delayAmount;
 	for ( uint8_t i = 0; i < delayAmount; i++){
 		average += readTemp(ThermistorPin);
     	delay(delayTime);
@@ -27,7 +27,7 @@ float readAverageTemp(int thermistorPin, int maxDelay, int delayAmount = 1 ){ //
 }
 
 void loop() {
-	T = readAverageTemp(ThermistorPin, 4, 500);
+	T = readAverageTemp(ThermistorPin, 500, 4);
 	Serial.print("Average Temperature: "); 
 	Serial.print(T);
 	Serial.println(" C");
